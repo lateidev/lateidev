@@ -1,8 +1,12 @@
 <div align="center">
 
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=C0C0C0&height=170&section=header&text=@lateidev&fontColor=000000&fontSize=64&animation=fadeIn&fontAlignY=50&customFontFace=MonumentExtended-Regular&v=4" width="100%">
+  <picture style="background-color: #ffffff; display: block; border-radius: 10px; overflow: hidden;">
+    <img src="https://capsule-render.vercel.app/api?type=waving&color=C0C0C0&height=170&section=header&text=@lateidev&fontColor=000000&fontSize=64&animation=twinkling&fontAlignY=50&customFontFace=MonumentExtended-Regular" width="100%" style="background-color: #ffffff;">
+  </picture>
 
 </div>
+
+<br>
 
 <div align="center">
 
@@ -10,25 +14,23 @@
 
 </div>
 
-<br>
+<br><br>
 
 <div align="center">
 
   <a href="https://www.youtube.com/@lateiprivado" target="_blank">
-    <img src="https://img.shields.io/badge/YOUTUBE-FFFFFF?style=for-the-badge&logo=youtube&logoColor=000000&labelColor=C0C0C0" height="42">
+    <img src="https://img.shields.io/badge/YOUTUBE-FFFFFF?style=for-the-badge&logo=youtube&logoColor=000000&labelColor=C0C0C0" height="55">
   </a>
-
+  &nbsp;
   <a href="https://discord.gg/yamyamtr" target="_blank">
-    <img src="https://img.shields.io/badge/DISCORD-FFFFFF?style=for-the-badge&logo=discord&logoColor=000000&labelColor=C0C0C0" height="42">
+    <img src="https://img.shields.io/badge/DISCORD-FFFFFF?style=for-the-badge&logo=discord&logoColor=000000&labelColor=C0C0C0" height="55">
   </a>
-
+  &nbsp;
   <a href="https://open.spotify.com/intl-tr/artist/4jXGghZq4hXvZ14nlWzxuM?si=PW5dylUlQ2iYDL2O4qTlKA" target="_blank">
-    <img src="https://img.shields.io/badge/SPOTIFY-FFFFFF?style=for-the-badge&logo=spotify&logoColor=000000&labelColor=C0C0C0" height="42">
+    <img src="https://img.shields.io/badge/SPOTIFY-FFFFFF?style=for-the-badge&logo=spotify&logoColor=000000&labelColor=C0C0C0" height="55">
   </a>
-
-<br><br>
-
-  <img src="https://komarev.com/ghpvc/?username=lateidev&color=FFFFFF&labelColor=C0C0C0&style=for-the-badge&label=VISITORS" height="42">
+  &nbsp;
+  <img src="https://komarev.com/ghpvc/?username=lateidev&style=for-the-badge&label=VISITORS&labelColor=C0C0C0&color=000000" height="55">
 
 </div>
 
@@ -36,7 +38,7 @@
 
 <div align="center">
 
-  <img src="https://raw.githubusercontent.com/lateidev/lateidev/main/generated/github-stats.svg" width="85%" alt="GitHub Stats">
+  <img src="./generated/github-stats.svg" width="85%" alt="GitHub Stats">
 
 </div>
 
@@ -44,7 +46,9 @@
 
 <div align="center">
 
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=C0C0C0&height=60&section=header" width="85%">
+  <picture style="background-color: #ffffff; display: inline-block; width: 85%; border-radius: 10px; overflow: hidden;">
+    <img src="https://capsule-render.vercel.app/api?type=waving&color=C0C0C0&height=60&section=header" width="100%" style="background-color: #ffffff;">
+  </picture>
 
 </div>
 
@@ -52,7 +56,7 @@
 
 <div align="center">
 
-  <img src="https://raw.githubusercontent.com/lateidev/lateidev/main/generated/top-languages.svg" width="85%" alt="Top Languages">
+  <img src="./generated/top-languages.svg" width="85%" alt="Top Languages">
 
 </div>
 
@@ -60,7 +64,9 @@
 
 <div align="center">
 
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=C0C0C0&height=60&section=header" width="85%">
+  <picture style="background-color: #ffffff; display: inline-block; width: 85%; border-radius: 10px; overflow: hidden;">
+    <img src="https://capsule-render.vercel.app/api?type=waving&color=C0C0C0&height=60&section=header" width="100%" style="background-color: #ffffff;">
+  </picture>
 
 </div>
 
@@ -76,6 +82,8 @@
 
 <div align="center">
 
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=C0C0C0&height=80&section=footer" width="100%">
+  <picture style="background-color: #ffffff; display: block; border-radius: 10px; overflow: hidden;">
+    <img src="https://capsule-render.vercel.app/api?type=waving&color=C0C0C0&height=80&section=footer" width="100%" style="background-color: #ffffff;">
+  </picture>
 
 </div>
