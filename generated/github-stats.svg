@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="300" viewBox="0 0 900 300">
+  <defs>
+    <linearGradient id="silverGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#888888"/>
+      <stop offset="50%" stop-color="#C0C0C0"/>
+      <stop offset="100%" stop-color="#888888"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+
+  <rect x="5" y="5" width="890" height="290" rx="22" fill="#FFFFFF" stroke="#E5E5E5" stroke-width="2" filter="url(#shadow)"/>
+  <path d="M5 55 C120 15 190 85 310 45 C430 5 520 75 650 40 C760 10 820 45 895 20 L895 5 L5 5 Z" fill="url(#silverGradient)"/>
+
+  <text x="45" y="105" fill="#000000" font-family="Arial, sans-serif" font-size="28" font-weight="700">GitHub Statistics</text>
+  <text x="45" y="132" fill="#888888" font-family="monospace" font-size="13">@lateidev / github activity</text>
+
+  <line x1="45" y1="155" x2="855" y2="155" stroke="#E5E5E5" stroke-width="2"/>
+
+  <text x="70" y="195" fill="#888888" font-family="Arial, sans-serif" font-size="14">REPOSITORIES</text>
+  <text x="70" y="235" fill="#000000" font-family="Arial, sans-serif" font-size="34" font-weight="700">7</text>
+
+  <text x="350" y="195" fill="#888888" font-family="Arial, sans-serif" font-size="14">FOLLOWERS</text>
+  <text x="350" y="235" fill="#000000" font-family="Arial, sans-serif" font-size="34" font-weight="700">0</text>
+
+  <text x="630" y="195" fill="#888888" font-family="Arial, sans-serif" font-size="14">TOTAL STARS</text>
+  <text x="630" y="235" fill="#000000" font-family="Arial, sans-serif" font-size="34" font-weight="700">1</text>
+
+  <path d="M5 270 C120 240 190 295 310 260 C430 225 520 285 650 255 C760 230 820 265 895 240 L895 295 L5 295 Z" fill="url(#silverGradient)"/>
+</svg>
