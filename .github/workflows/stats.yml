@@ -1,0 +1,85 @@
+```yaml
+name: Generate GitHub Stats
+
+on:
+  schedule:
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  stats:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Generate stats
+        uses: anuraghazra/github-readme-stats@master
+        with:
+          github_user_name: lateidev
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Generate custom stats
+        run: |
+          mkdir -p generated
+
+          python3 - <<'PY'
+          import urllib.request
+          import json
+
+          username = "lateidev"
+
+          url = f"https://api.github.com/users/{username}"
+          req = urllib.request.Request(
+              url,
+              headers={
+                  "Accept": "application/vnd.github+json",
+                  "User-Agent": "github-stats-generator"
+              }
+          )
+
+          with urllib.request.urlopen(req) as response:
+              user = json.load(response)
+
+          repos = user.get("public_repos", 0)
+          followers = user.get("followers", 0)
+          following = user.get("following", 0)
+
+          svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="700" height="220" viewBox="0 0 700 220">
+            <rect width="700" height="220" rx="12" fill="#000000"/>
+            <text x="30" y="45" fill="#C0C0C0" font-family="Arial" font-size="24" font-weight="bold">GitHub Statistics</text>
+
+            <text x="30" y="95" fill="#FFFFFF" font-family="Arial" font-size="16">Public Repositories</text>
+            <text x="30" y="125" fill="#C0C0C0" font-family="Arial" font-size="28" font-weight="bold">{repos}</text>
+
+            <text x="250" y="95" fill="#FFFFFF" font-family="Arial" font-size="16">Followers</text>
+            <text x="250" y="125" fill="#C0C0C0" font-family="Arial" font-size="28" font-weight="bold">{followers}</text>
+
+            <text x="450" y="95" fill="#FFFFFF" font-family="Arial" font-size="16">Following</text>
+            <text x="450" y="125" fill="#C0C0C0" font-family="Arial" font-size="28" font-weight="bold">{following}</text>
+
+            <line x1="30" y1="160" x2="670" y2="160" stroke="#333333"/>
+
+            <text x="30" y="195" fill="#888888" font-family="monospace" font-size="14">@lateidev</text>
+            <text x="530" y="195" fill="#888888" font-family="monospace" font-size="14">ONLINE</text>
+          </svg>'''
+
+          with open("generated/github-stats.svg", "w") as f:
+              f.write(svg)
+          PY
+
+      - name: Commit generated stats
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add generated/
+
+          git diff --cached --quiet || git commit -m "Update GitHub stats"
+
+          git push
+```
