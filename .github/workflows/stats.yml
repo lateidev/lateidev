@@ -16,11 +16,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Generate stats
+      - name: Generate stats and boost visitors
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           mkdir -p generated
+
+          # Ziyaretçi sayacını otomatik artırmak için istek gönderiliyor
+          for i in {1..20}; do
+            curl -s "https://komarev.com/ghpvc/?username=lateidev" > /dev/null || true
+          done
 
           python3 <<'PY'
           import urllib.request
