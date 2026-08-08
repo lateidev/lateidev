@@ -65,45 +65,35 @@ jobs:
                   percentage = (amount / total_bytes) * 100
                   language_data.append((language, percentage))
 
-          # Colors
-          WHITE = "#FFFFFF"
-          BLACK = "#000000"
-          SILVER = "#C0C0C0"
-          DARK_SILVER = "#888888"
-          LIGHT_GRAY = "#E5E5E5"
-          BAR_BG = "#EEEEEE"
-
           # ---------------------------------------------------------
           # GITHUB STATS SVG
           # ---------------------------------------------------------
           stats_svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="900" height="300" viewBox="0 0 900 300">
+            <rect x="0" y="0" width="900" height="300" fill="#FFFFFF"/>
             <defs>
               <linearGradient id="silverGradient" x1="0%" y1="0%" x2="100%" y2="0%">
                 <stop offset="0%" stop-color="#888888"/>
                 <stop offset="50%" stop-color="#C0C0C0"/>
                 <stop offset="100%" stop-color="#888888"/>
               </linearGradient>
-              <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
-                <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.15"/>
-              </filter>
             </defs>
 
-            <rect x="5" y="5" width="890" height="290" rx="22" fill="{WHITE}" stroke="{LIGHT_GRAY}" stroke-width="2" filter="url(#shadow)"/>
+            <rect x="5" y="5" width="890" height="290" rx="22" fill="#FFFFFF" stroke="#E5E5E5" stroke-width="2"/>
             <path d="M5 55 C120 15 190 85 310 45 C430 5 520 75 650 40 C760 10 820 45 895 20 L895 5 L5 5 Z" fill="url(#silverGradient)"/>
 
-            <text x="45" y="105" fill="{BLACK}" font-family="Arial, sans-serif" font-size="28" font-weight="700">GitHub Statistics</text>
-            <text x="45" y="132" fill="{DARK_SILVER}" font-family="monospace" font-size="13">@lateidev / github activity</text>
+            <text x="45" y="105" fill="#000000" font-family="sans-serif" font-size="28" font-weight="700">GitHub Statistics</text>
+            <text x="45" y="132" fill="#888888" font-family="monospace" font-size="13">@lateidev / github activity</text>
 
-            <line x1="45" y1="155" x2="855" y2="155" stroke="{LIGHT_GRAY}" stroke-width="2"/>
+            <line x1="45" y1="155" x2="855" y2="155" stroke="#E5E5E5" stroke-width="2"/>
 
-            <text x="70" y="195" fill="{DARK_SILVER}" font-family="Arial, sans-serif" font-size="14">REPOSITORIES</text>
-            <text x="70" y="235" fill="{BLACK}" font-family="Arial, sans-serif" font-size="34" font-weight="700">{user.get("public_repos", 0)}</text>
+            <text x="70" y="195" fill="#888888" font-family="sans-serif" font-size="14">REPOSITORIES</text>
+            <text x="70" y="235" fill="#000000" font-family="sans-serif" font-size="34" font-weight="700">{user.get("public_repos", 0)}</text>
 
-            <text x="350" y="195" fill="{DARK_SILVER}" font-family="Arial, sans-serif" font-size="14">FOLLOWERS</text>
-            <text x="350" y="235" fill="{BLACK}" font-family="Arial, sans-serif" font-size="34" font-weight="700">{user.get("followers", 0)}</text>
+            <text x="350" y="195" fill="#888888" font-family="sans-serif" font-size="14">FOLLOWERS</text>
+            <text x="350" y="235" fill="#000000" font-family="sans-serif" font-size="34" font-weight="700">{user.get("followers", 0)}</text>
 
-            <text x="630" y="195" fill="{DARK_SILVER}" font-family="Arial, sans-serif" font-size="14">TOTAL STARS</text>
-            <text x="630" y="235" fill="{BLACK}" font-family="Arial, sans-serif" font-size="34" font-weight="700">{total_stars}</text>
+            <text x="630" y="195" fill="#888888" font-family="sans-serif" font-size="14">TOTAL STARS</text>
+            <text x="630" y="235" fill="#000000" font-family="sans-serif" font-size="34" font-weight="700">{total_stars}</text>
 
             <path d="M5 270 C120 240 190 295 310 260 C430 225 520 285 650 255 C760 230 820 265 895 240 L895 295 L5 295 Z" fill="url(#silverGradient)"/>
           </svg>'''
@@ -112,57 +102,55 @@ jobs:
               f.write(stats_svg)
 
           # ---------------------------------------------------------
-          # TOP LANGUAGES SVG (Düzenlenen Kısım)
+          # TOP LANGUAGES SVG (GitHub Uyumlu Yapı)
           # ---------------------------------------------------------
           bars = ""
-          y = 155  # Barların başlangıç yüksekliği
+          y = 150
 
           for language, percentage in language_data:
-              bar_width = min(600, max(10, percentage * 6))
+              bar_width = min(600, max(12, percentage * 6))
               safe_language = html.escape(language)
 
               bars += f'''
-              <text x="55" y="{y}" fill="{BLACK}" font-family="Arial, sans-serif" font-size="15" font-weight="600">{safe_language}</text>
-              <rect x="190" y="{y - 15}" width="600" height="18" rx="9" fill="{BAR_BG}"/>
-              <rect x="190" y="{y - 15}" width="{bar_width}" height="18" rx="9" fill="{SILVER}"/>
-              <text x="835" y="{y}" fill="{DARK_SILVER}" font-family="monospace" font-size="14" text-anchor="end">{percentage:.1f}%</text>
+              <text x="55" y="{y}" fill="#000000" font-family="sans-serif" font-size="15" font-weight="600">{safe_language}</text>
+              <rect x="190" y="{y - 14}" width="600" height="16" rx="8" fill="#EEEEEE"/>
+              <rect x="190" y="{y - 14}" width="{bar_width}" height="16" rx="8" fill="#C0C0C0"/>
+              <text x="835" y="{y}" fill="#888888" font-family="monospace" font-size="14" text-anchor="end">{percentage:.1f}%</text>
               '''
-              y += 42
+              y += 45
 
-          # Dalga deseninin üst çakışmasını engellemek için dinamik yükseklik
-          height = max(340, y + 90)
+          num_langs = max(1, len(language_data))
+          height = 160 + (num_langs * 45) + 60
           card_height = height - 10
 
-          b_y1 = height - 40
-          b_y2 = height - 70
-          b_y3 = height - 15
-          b_y4 = height - 50
-          b_y5 = height - 85
-          b_y6 = height - 25
-          b_y7 = height - 55
-          b_y8 = height - 80
-          b_y9 = height - 45
-          b_y10 = height - 70
+          b_y1 = height - 35
+          b_y2 = height - 60
+          b_y3 = height - 10
+          b_y4 = height - 40
+          b_y5 = height - 70
+          b_y6 = height - 20
+          b_y7 = height - 45
+          b_y8 = height - 65
+          b_y9 = height - 35
+          b_y10 = height - 55
           b_y11 = height - 5
 
           languages_svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="900" height="{height}" viewBox="0 0 900 {height}">
+            <rect x="0" y="0" width="900" height="{height}" fill="#FFFFFF"/>
             <defs>
               <linearGradient id="silverGradientLang" x1="0%" y1="0%" x2="100%" y2="0%">
                 <stop offset="0%" stop-color="#888888"/>
                 <stop offset="50%" stop-color="#C0C0C0"/>
                 <stop offset="100%" stop-color="#888888"/>
               </linearGradient>
-              <filter id="shadowLang" x="-20%" y="-20%" width="140%" height="140%">
-                <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.15"/>
-              </filter>
             </defs>
 
-            <rect x="5" y="5" width="890" height="{card_height}" rx="22" fill="{WHITE}" stroke="{LIGHT_GRAY}" stroke-width="2" filter="url(#shadowLang)"/>
-            <path d="M5 55 C120 15 190 85 310 45 C430 5 520 75 650 40 C760 10 820 45 895 20 L895 5 L5 5 Z" fill="url(#silverGradientLang)"/>
+            <rect x="5" y="5" width="890" height="{card_height}" rx="22" fill="#FFFFFF" stroke="#E5E5E5" stroke-width="2"/>
+            <path d="M5 45 C120 15 190 70 310 35 C430 5 520 60 650 30 C760 10 820 35 895 15 L895 5 L5 5 Z" fill="url(#silverGradientLang)"/>
 
-            <text x="45" y="75" fill="{BLACK}" font-family="Arial, sans-serif" font-size="28" font-weight="700">Top Languages</text>
-            <text x="45" y="100" fill="{DARK_SILVER}" font-family="monospace" font-size="13">@lateidev / language distribution</text>
-            <line x1="45" y1="118" x2="855" y2="118" stroke="{LIGHT_GRAY}" stroke-width="2"/>
+            <text x="45" y="75" fill="#000000" font-family="sans-serif" font-size="28" font-weight="700">Top Languages</text>
+            <text x="45" y="100" fill="#888888" font-family="monospace" font-size="13">@lateidev / language distribution</text>
+            <line x1="45" y1="115" x2="855" y2="115" stroke="#E5E5E5" stroke-width="2"/>
 
             {bars}
 
