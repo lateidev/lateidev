@@ -73,7 +73,9 @@ jobs:
           LIGHT_GRAY = "#E5E5E5"
           BAR_BG = "#EEEEEE"
 
+          # ---------------------------------------------------------
           # GITHUB STATS SVG
+          # ---------------------------------------------------------
           stats_svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="900" height="300" viewBox="0 0 900 300">
             <defs>
               <linearGradient id="silverGradient" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -109,12 +111,14 @@ jobs:
           with open("generated/github-stats.svg", "w", encoding="utf-8") as f:
               f.write(stats_svg)
 
-          # TOP LANGUAGES SVG (Düzeltilen Bölüm)
+          # ---------------------------------------------------------
+          # TOP LANGUAGES SVG (Düzenlenen Kısım)
+          # ---------------------------------------------------------
           bars = ""
-          y = 175  # Yeterli dikey boşluk için 175px'e çekildi
+          y = 155  # Barların başlangıç yüksekliği
 
           for language, percentage in language_data:
-              bar_width = min(600, max(5, percentage * 6))
+              bar_width = min(600, max(10, percentage * 6))
               safe_language = html.escape(language)
 
               bars += f'''
@@ -123,10 +127,12 @@ jobs:
               <rect x="190" y="{y - 15}" width="{bar_width}" height="18" rx="9" fill="{SILVER}"/>
               <text x="835" y="{y}" fill="{DARK_SILVER}" font-family="monospace" font-size="14" text-anchor="end">{percentage:.1f}%</text>
               '''
-              y += 40
+              y += 42
 
-          height = max(360, y + 60)  # Alt dalga için padding artırıldı
+          # Dalga deseninin üst çakışmasını engellemek için dinamik yükseklik
+          height = max(340, y + 90)
           card_height = height - 10
+
           b_y1 = height - 40
           b_y2 = height - 70
           b_y3 = height - 15
@@ -154,9 +160,9 @@ jobs:
             <rect x="5" y="5" width="890" height="{card_height}" rx="22" fill="{WHITE}" stroke="{LIGHT_GRAY}" stroke-width="2" filter="url(#shadowLang)"/>
             <path d="M5 55 C120 15 190 85 310 45 C430 5 520 75 650 40 C760 10 820 45 895 20 L895 5 L5 5 Z" fill="url(#silverGradientLang)"/>
 
-            <text x="45" y="105" fill="{BLACK}" font-family="Arial, sans-serif" font-size="28" font-weight="700">Top Languages</text>
-            <text x="45" y="132" fill="{DARK_SILVER}" font-family="monospace" font-size="13">@lateidev / language distribution</text>
-            <line x1="45" y1="148" x2="855" y2="148" stroke="{LIGHT_GRAY}" stroke-width="2"/>
+            <text x="45" y="75" fill="{BLACK}" font-family="Arial, sans-serif" font-size="28" font-weight="700">Top Languages</text>
+            <text x="45" y="100" fill="{DARK_SILVER}" font-family="monospace" font-size="13">@lateidev / language distribution</text>
+            <line x1="45" y1="118" x2="855" y2="118" stroke="{LIGHT_GRAY}" stroke-width="2"/>
 
             {bars}
 
