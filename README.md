@@ -3,39 +3,43 @@
 </div>
 
 <div align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=30&pause=1000&color=FFFFFF&center=true&width=550&lines=>_+Root+Access+Granted...;>_+C%2B%2B+%26+Game+Modding...;>_+Bypass+Mastering...;>_+latei.exe+running...;>_+Hi+stalker+:)">
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=30&pause=1000&color=FFFFFF&center=true&width=600&lines=%3E_+initializing+latei.exe...;%3E_+loading+C%2B%2B+modules...;%3E_+attaching+to+user-mode...;%3E_+compiling+chaos...;%3E_+reversing+everything...;%3E_+access+granted.;%3E_+welcome%2C+stalker." alt="Typing SVG">
 </div>
 
 <br>
 
 <div align="center">
-    <a href="https://www.youtube.com/@lateiprivado" target="_blank"><img src="https://img.shields.io/badge/YouTube-FFFFFF?style=for-the-badge&logo=youtube&logoColor=black"></a>
-    <a href="https://discord.gg/yamyamtr" target="_blank"><img src="https://img.shields.io/badge/Discord-FFFFFF?style=for-the-badge&logo=discord&logoColor=black"></a>
-    <a href="https://open.spotify.com/intl-tr/artist/4jXGghZq4hXvZ14nlWzxuM?si=PW5dylUlQ2iYDL2O4qTlKA" target="_blank"><img src="https://img.shields.io/badge/Spotify-FFFFFF?style=for-the-badge&logo=spotify&logoColor=black"></a>
-    <br><br>
-    <img height="60" src="https://komarev.com/ghpvc/?username=lateidev&color=000000&labelColor=ffffff&style=for-the-badge&label=VISITORS">
+
+  <a href="https://www.youtube.com/@lateiprivado" target="_blank">
+    <img src="https://img.shields.io/badge/YouTube-FFFFFF?style=for-the-badge&logo=youtube&logoColor=black">
+  </a>
+
+  <a href="https://discord.gg/yamyamtr" target="_blank">
+    <img src="https://img.shields.io/badge/Discord-FFFFFF?style=for-the-badge&logo=discord&logoColor=black">
+  </a>
+
+  <a href="https://open.spotify.com/intl-tr/artist/4jXGghZq4hXvZ14nlWzxuM?si=PW5dylUlQ2iYDL2O4qTlKA" target="_blank">
+    <img src="https://img.shields.io/badge/Spotify-FFFFFF?style=for-the-badge&logo=spotify&logoColor=black">
+  </a>
+
+<br><br>
+
+  <img src="https://komarev.com/ghpvc/?username=lateidev&color=C0C0C0&labelColor=000000&style=for-the-badge&label=VISITORS" height="60">
+
+</div>
+
+<br><br>
+
+<div align="center">
+
+  <img src="https://raw.githubusercontent.com/lateidev/lateidev/output/github-contribution-grid-snake.svg" width="100%" alt="GitHub Contribution Snake">
+
 </div>
 
 <br>
 
-```cpp
-#include <iostream>
+<div align="center">
 
-struct Profile {
-    const char* alias = "@lateidev";
-    const char* current_project = "Nonagon Arduino Bypass & C++ All in one Optimizer";
-    const char* architecture = "Low-Level Windows, Kernel-mode, ImGui, Aduino,";
-    const char* spotify_status = "Track pending on DistroKid for Spotify";
-    const char* recent_gaming = "Baldur's Gate 3 (5th playthrough)";
-    const char* location = "127.0.0.1";
-    
-    void execute() {
-        std::cout << "System initialized. Welcome to my workspace." << std::endl;
-    }
-};
+  <img src="https://github-readme-stats.vercel.app/api?username=lateidev&show_icons=true&hide_border=true&bg_color=000000&title_color=C0C0C0&text_color=FFFFFF&icon_color=C0C0C0&include_all_commits=true&count_private=true&cache_seconds=1800" width="70%" alt="GitHub Stats">
 
-int main() {
-    Profile latei;
-    latei.execute();
-    return 0;
-}
+</div>
