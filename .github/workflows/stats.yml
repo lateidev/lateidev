@@ -109,9 +109,9 @@ jobs:
           with open("generated/github-stats.svg", "w", encoding="utf-8") as f:
               f.write(stats_svg)
 
-          # TOP LANGUAGES SVG
+          # TOP LANGUAGES SVG (Düzeltilen Bölüm)
           bars = ""
-          y = 95
+          y = 175  # Yeterli dikey boşluk için 175px'e çekildi
 
           for language, percentage in language_data:
               bar_width = min(600, max(5, percentage * 6))
@@ -123,9 +123,9 @@ jobs:
               <rect x="190" y="{y - 15}" width="{bar_width}" height="18" rx="9" fill="{SILVER}"/>
               <text x="835" y="{y}" fill="{DARK_SILVER}" font-family="monospace" font-size="14" text-anchor="end">{percentage:.1f}%</text>
               '''
-              y += 45
+              y += 40
 
-          height = max(300, y + 65)
+          height = max(360, y + 60)  # Alt dalga için padding artırıldı
           card_height = height - 10
           b_y1 = height - 40
           b_y2 = height - 70
@@ -156,6 +156,7 @@ jobs:
 
             <text x="45" y="105" fill="{BLACK}" font-family="Arial, sans-serif" font-size="28" font-weight="700">Top Languages</text>
             <text x="45" y="132" fill="{DARK_SILVER}" font-family="monospace" font-size="13">@lateidev / language distribution</text>
+            <line x1="45" y1="148" x2="855" y2="148" stroke="{LIGHT_GRAY}" stroke-width="2"/>
 
             {bars}
 
