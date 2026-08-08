@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="240">
+<rect width="760" height="240" rx="14" fill="#000000"/>
+
+<text x="35" y="48"
+      fill="#C0C0C0"
+      font-family="Arial"
+      font-size="24"
+      font-weight="bold">
+  GitHub Statistics
+</text>
+
+<text x="35" y="95"
+      fill="#FFFFFF"
+      font-family="Arial"
+      font-size="15">
+  Repositories
+</text>
+
+<text x="35" y="130"
+      fill="#C0C0C0"
+      font-family="Arial"
+      font-size="30"
+      font-weight="bold">
+  7
+</text>
+
+<text x="275" y="95"
+      fill="#FFFFFF"
+      font-family="Arial"
+      font-size="15">
+  Followers
+</text>
+
+<text x="275" y="130"
+      fill="#C0C0C0"
+      font-family="Arial"
+      font-size="30"
+      font-weight="bold">
+  0
+</text>
+
+<text x="515" y="95"
+      fill="#FFFFFF"
+      font-family="Arial"
+      font-size="15">
+  Stars
+</text>
+
+<text x="515" y="130"
+      fill="#C0C0C0"
+      font-family="Arial"
+      font-size="30"
+      font-weight="bold">
+  1
+</text>
+
+<line x1="35" y1="165" x2="725" y2="165"
+      stroke="#333333"/>
+
+<text x="35" y="202"
+      fill="#888888"
+      font-family="monospace"
+      font-size="14">
+  @lateidev
+</text>
+
+<text x="610" y="202"
+      fill="#888888"
+      font-family="monospace"
+      font-size="14">
+  ONLINE
+</text>
+</svg>
