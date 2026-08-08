@@ -1,4 +1,3 @@
-```yaml
 name: Generate GitHub Stats
 
 on:
@@ -15,7 +14,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v4
 
       - name: Generate stats
         env:
@@ -40,73 +39,33 @@ jobs:
               with urllib.request.urlopen(req) as response:
                   return json.load(response)
 
-          # -----------------------------
-          # GitHub user information
-          # -----------------------------
+          # GitHub user info
+          user = get(f"https://api.github.com/users/{username}")
+          repos = get(f"https://api.github.com/users/{username}/repos?per_page=100")
 
-          user = get(
-              f"https://api.github.com/users/{username}"
-          )
+          total_stars = sum(repo.get("stargazers_count", 0) for repo in repos)
 
-          repos = get(
-              f"https://api.github.com/users/{username}/repos?per_page=100"
-          )
-
-          # -----------------------------
-          # Total stars
-          # -----------------------------
-
-          total_stars = sum(
-              repo.get("stargazers_count", 0)
-              for repo in repos
-          )
-
-          # -----------------------------
           # Languages
-          # -----------------------------
-
           languages = {}
-
           for repo in repos:
-
               if repo.get("fork"):
                   continue
-
               try:
-                  lang_data = get(
-                      f"https://api.github.com/repos/{username}/{repo['name']}/languages"
-                  )
-
+                  lang_data = get(f"https://api.github.com/repos/{username}/{repo['name']}/languages")
                   for language, amount in lang_data.items():
-                      languages[language] = (
-                          languages.get(language, 0) + amount
-                      )
-
+                      languages[language] = languages.get(language, 0) + amount
               except Exception:
                   continue
 
           total_bytes = sum(languages.values())
-
           language_data = []
 
           if total_bytes:
+              for language, amount in sorted(languages.items(), key=lambda x: x[1], reverse=True)[:8]:
+                  percentage = (amount / total_bytes) * 100
+                  language_data.append((language, percentage))
 
-              for language, amount in sorted(
-                  languages.items(),
-                  key=lambda x: x[1],
-                  reverse=True
-              )[:8]:
-
-                  percentage = amount / total_bytes * 100
-
-                  language_data.append(
-                      (language, percentage)
-                  )
-
-          # -----------------------------
-          # COLORS
-          # -----------------------------
-
+          # Colors
           WHITE = "#FFFFFF"
           BLACK = "#000000"
           SILVER = "#C0C0C0"
@@ -114,399 +73,105 @@ jobs:
           LIGHT_GRAY = "#E5E5E5"
           BAR_BG = "#EEEEEE"
 
-          # ==========================================================
           # GITHUB STATS SVG
-          # ==========================================================
+          stats_svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="900" height="300" viewBox="0 0 900 300">
+            <defs>
+              <linearGradient id="silverGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#888888"/>
+                <stop offset="50%" stop-color="#C0C0C0"/>
+                <stop offset="100%" stop-color="#888888"/>
+              </linearGradient>
+              <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+                <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.15"/>
+              </filter>
+            </defs>
 
-          stats_svg = f'''<svg xmlns="http://www.w3.org/2000/svg"
-          width="900"
-          height="300"
-          viewBox="0 0 900 300">
+            <rect x="5" y="5" width="890" height="290" rx="22" fill="{WHITE}" stroke="{LIGHT_GRAY}" stroke-width="2" filter="url(#shadow)"/>
+            <path d="M5 55 C120 15 190 85 310 45 C430 5 520 75 650 40 C760 10 820 45 895 20 L895 5 L5 5 Z" fill="url(#silverGradient)"/>
 
-          <defs>
+            <text x="45" y="105" fill="{BLACK}" font-family="Arial, sans-serif" font-size="28" font-weight="700">GitHub Statistics</text>
+            <text x="45" y="132" fill="{DARK_SILVER}" font-family="monospace" font-size="13">@lateidev / github activity</text>
 
-            <linearGradient id="silverGradient"
-                            x1="0%"
-                            y1="0%"
-                            x2="100%"
-                            y2="0%">
+            <line x1="45" y1="155" x2="855" y2="155" stroke="{LIGHT_GRAY}" stroke-width="2"/>
 
-              <stop offset="0%"
-                    stop-color="#888888"/>
+            <text x="70" y="195" fill="{DARK_SILVER}" font-family="Arial, sans-serif" font-size="14">REPOSITORIES</text>
+            <text x="70" y="235" fill="{BLACK}" font-family="Arial, sans-serif" font-size="34" font-weight="700">{user.get("public_repos", 0)}</text>
 
-              <stop offset="50%"
-                    stop-color="#C0C0C0"/>
+            <text x="350" y="195" fill="{DARK_SILVER}" font-family="Arial, sans-serif" font-size="14">FOLLOWERS</text>
+            <text x="350" y="235" fill="{BLACK}" font-family="Arial, sans-serif" font-size="34" font-weight="700">{user.get("followers", 0)}</text>
 
-              <stop offset="100%"
-                    stop-color="#888888"/>
+            <text x="630" y="195" fill="{DARK_SILVER}" font-family="Arial, sans-serif" font-size="14">TOTAL STARS</text>
+            <text x="630" y="235" fill="{BLACK}" font-family="Arial, sans-serif" font-size="34" font-weight="700">{total_stars}</text>
 
-            </linearGradient>
-
-            <filter id="shadow"
-                    x="-20%"
-                    y="-20%"
-                    width="140%"
-                    height="140%">
-
-              <feDropShadow
-                  dx="0"
-                  dy="4"
-                  stdDeviation="6"
-                  flood-color="#000000"
-                  flood-opacity="0.15"/>
-
-            </filter>
-
-          </defs>
-
-          <!-- CARD -->
-
-          <rect
-              x="5"
-              y="5"
-              width="890"
-              height="290"
-              rx="22"
-              fill="{WHITE}"
-              stroke="{LIGHT_GRAY}"
-              stroke-width="2"
-              filter="url(#shadow)"/>
-
-          <!-- TOP WAVE -->
-
-          <path
-              d="M5 55
-                 C120 15 190 85 310 45
-                 C430 5 520 75 650 40
-                 C760 10 820 45 895 20
-                 L895 5
-                 L5 5 Z"
-              fill="url(#silverGradient)"/>
-
-          <!-- TITLE -->
-
-          <text
-              x="45"
-              y="105"
-              fill="{BLACK}"
-              font-family="Arial, sans-serif"
-              font-size="28"
-              font-weight="700">
-
-              GitHub Statistics
-          </text>
-
-          <text
-              x="45"
-              y="132"
-              fill="{DARK_SILVER}"
-              font-family="monospace"
-              font-size="13">
-
-              @lateidev / github activity
-          </text>
-
-          <!-- DIVIDER -->
-
-          <line
-              x1="45"
-              y1="155"
-              x2="855"
-              y2="155"
-              stroke="{LIGHT_GRAY}"
-              stroke-width="2"/>
-
-          <!-- REPOSITORIES -->
-
-          <text
-              x="70"
-              y="195"
-              fill="{DARK_SILVER}"
-              font-family="Arial, sans-serif"
-              font-size="14">
-
-              REPOSITORIES
-          </text>
-
-          <text
-              x="70"
-              y="235"
-              fill="{BLACK}"
-              font-family="Arial, sans-serif"
-              font-size="34"
-              font-weight="700">
-
-              {user["public_repos"]}
-          </text>
-
-          <!-- FOLLOWERS -->
-
-          <text
-              x="350"
-              y="195"
-              fill="{DARK_SILVER}"
-              font-family="Arial, sans-serif"
-              font-size="14">
-
-              FOLLOWERS
-          </text>
-
-          <text
-              x="350"
-              y="235"
-              fill="{BLACK}"
-              font-family="Arial, sans-serif"
-              font-size="34"
-              font-weight="700">
-
-              {user["followers"]}
-          </text>
-
-          <!-- STARS -->
-
-          <text
-              x="630"
-              y="195"
-              fill="{DARK_SILVER}"
-              font-family="Arial, sans-serif"
-              font-size="14">
-
-              TOTAL STARS
-          </text>
-
-          <text
-              x="630"
-              y="235"
-              fill="{BLACK}"
-              font-family="Arial, sans-serif"
-              font-size="34"
-              font-weight="700">
-
-              {total_stars}
-          </text>
-
-          <!-- BOTTOM WAVE -->
-
-          <path
-              d="M5 270
-                 C120 240 190 295 310 260
-                 C430 225 520 285 650 255
-                 C760 230 820 265 895 240
-                 L895 295
-                 L5 295 Z"
-              fill="url(#silverGradient)"/>
-
+            <path d="M5 270 C120 240 190 295 310 260 C430 225 520 285 650 255 C760 230 820 265 895 240 L895 295 L5 295 Z" fill="url(#silverGradient)"/>
           </svg>'''
 
-          with open(
-              "generated/github-stats.svg",
-              "w",
-              encoding="utf-8"
-          ) as f:
-
+          with open("generated/github-stats.svg", "w", encoding="utf-8") as f:
               f.write(stats_svg)
 
-          # ==========================================================
           # TOP LANGUAGES SVG
-          # ==========================================================
-
           bars = ""
-
           y = 95
 
           for language, percentage in language_data:
-
-              bar_width = min(
-                  600,
-                  max(5, percentage * 6)
-              )
-
+              bar_width = min(600, max(5, percentage * 6))
               safe_language = html.escape(language)
 
               bars += f'''
-
-              <text
-                  x="55"
-                  y="{y}"
-                  fill="{BLACK}"
-                  font-family="Arial, sans-serif"
-                  font-size="15"
-                  font-weight="600">
-
-                  {safe_language}
-              </text>
-
-              <rect
-                  x="190"
-                  y="{y - 15}"
-                  width="600"
-                  height="18"
-                  rx="9"
-                  fill="{BAR_BG}"/>
-
-              <rect
-                  x="190"
-                  y="{y - 15}"
-                  width="{bar_width}"
-                  height="18"
-                  rx="9"
-                  fill="{SILVER}"/>
-
-              <text
-                  x="835"
-                  y="{y}"
-                  fill="{DARK_SILVER}"
-                  font-family="monospace"
-                  font-size="14"
-                  text-anchor="end">
-
-                  {percentage:.1f}%
-              </text>
-
+              <text x="55" y="{y}" fill="{BLACK}" font-family="Arial, sans-serif" font-size="15" font-weight="600">{safe_language}</text>
+              <rect x="190" y="{y - 15}" width="600" height="18" rx="9" fill="{BAR_BG}"/>
+              <rect x="190" y="{y - 15}" width="{bar_width}" height="18" rx="9" fill="{SILVER}"/>
+              <text x="835" y="{y}" fill="{DARK_SILVER}" font-family="monospace" font-size="14" text-anchor="end">{percentage:.1f}%</text>
               '''
-
               y += 45
 
-          height = max(
-              300,
-              y + 65
-          )
+          height = max(300, y + 65)
+          card_height = height - 10
+          b_y1 = height - 40
+          b_y2 = height - 70
+          b_y3 = height - 15
+          b_y4 = height - 50
+          b_y5 = height - 85
+          b_y6 = height - 25
+          b_y7 = height - 55
+          b_y8 = height - 80
+          b_y9 = height - 45
+          b_y10 = height - 70
+          b_y11 = height - 5
 
-          languages_svg = f'''<svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="900"
-          height="{height}"
-          viewBox="0 0 900 {height}">
+          languages_svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="900" height="{height}" viewBox="0 0 900 {height}">
+            <defs>
+              <linearGradient id="silverGradientLang" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#888888"/>
+                <stop offset="50%" stop-color="#C0C0C0"/>
+                <stop offset="100%" stop-color="#888888"/>
+              </linearGradient>
+              <filter id="shadowLang" x="-20%" y="-20%" width="140%" height="140%">
+                <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.15"/>
+              </filter>
+            </defs>
 
-          <defs>
+            <rect x="5" y="5" width="890" height="{card_height}" rx="22" fill="{WHITE}" stroke="{LIGHT_GRAY}" stroke-width="2" filter="url(#shadowLang)"/>
+            <path d="M5 55 C120 15 190 85 310 45 C430 5 520 75 650 40 C760 10 820 45 895 20 L895 5 L5 5 Z" fill="url(#silverGradientLang)"/>
 
-            <linearGradient
-                id="silverGradientLang"
-                x1="0%"
-                y1="0%"
-                x2="100%"
-                y2="0%">
+            <text x="45" y="105" fill="{BLACK}" font-family="Arial, sans-serif" font-size="28" font-weight="700">Top Languages</text>
+            <text x="45" y="132" fill="{DARK_SILVER}" font-family="monospace" font-size="13">@lateidev / language distribution</text>
 
-              <stop
-                  offset="0%"
-                  stop-color="#888888"/>
+            {bars}
 
-              <stop
-                  offset="50%"
-                  stop-color="#C0C0C0"/>
-
-              <stop
-                  offset="100%"
-                  stop-color="#888888"/>
-
-            </linearGradient>
-
-            <filter
-                id="shadowLang"
-                x="-20%"
-                y="-20%"
-                width="140%"
-                height="140%">
-
-              <feDropShadow
-                  dx="0"
-                  dy="4"
-                  stdDeviation="6"
-                  flood-color="#000000"
-                  flood-opacity="0.15"/>
-
-            </filter>
-
-          </defs>
-
-          <!-- CARD -->
-
-          <rect
-              x="5"
-              y="5"
-              width="890"
-              height="{height - 10}"
-              rx="22"
-              fill="{WHITE}"
-              stroke="{LIGHT_GRAY}"
-              stroke-width="2"
-              filter="url(#shadowLang)"/>
-
-          <!-- TOP WAVE -->
-
-          <path
-              d="M5 55
-                 C120 15 190 85 310 45
-                 C430 5 520 75 650 40
-                 C760 10 820 45 895 20
-                 L895 5
-                 L5 5 Z"
-              fill="url(#silverGradientLang)"/>
-
-          <!-- TITLE -->
-
-          <text
-              x="45"
-              y="105"
-              fill="{BLACK}"
-              font-family="Arial, sans-serif"
-              font-size="28"
-              font-weight="700">
-
-              Top Languages
-          </text>
-
-          <text
-              x="45"
-              y="132"
-              fill="{DARK_SILVER}"
-              font-family="monospace"
-              font-size="13">
-
-              @lateidev / language distribution
-          </text>
-
-          {bars}
-
-          <!-- BOTTOM WAVE -->
-
-          <path
-              d="M5 {height - 40}
-                 C120 {height - 70}
-                 190 {height - 15}
-                 310 {height - 50}
-                 C430 {height - 85}
-                 520 {height - 25}
-                 650 {height - 55}
-                 C760 {height - 80}
-                 820 {height - 45}
-                 895 {height - 70}
-                 L895 {height - 5}
-                 L5 {height - 5} Z"
-              fill="url(#silverGradientLang)"/>
-
+            <path d="M5 {b_y1} C120 {b_y2} 190 {b_y3} 310 {b_y4} C430 {b_y5} 520 {b_y6} 650 {b_y7} C760 {b_y8} 820 {b_y9} 895 {b_y10} L895 {b_y11} L5 {b_y11} Z" fill="url(#silverGradientLang)"/>
           </svg>'''
 
-          with open(
-              "generated/top-languages.svg",
-              "w",
-              encoding="utf-8"
-          ) as f:
-
+          with open("generated/top-languages.svg", "w", encoding="utf-8") as f:
               f.write(languages_svg)
 
-          print("GitHub Stats generated successfully.")
-          print("Top Languages generated successfully.")
+          print("Stats successfully generated!")
           PY
 
       - name: Commit generated files
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
           git add generated/
-
           git diff --cached --quiet || git commit -m "Update GitHub stats"
-
           git push
-```
