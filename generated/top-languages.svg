@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="900" height="395" viewBox="0 0 900 395">
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="413" viewBox="0 0 900 413">
   <defs>
     <linearGradient id="silverGradientLang" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#888888"/>
@@ -10,34 +10,34 @@
     </filter>
   </defs>
 
-  <rect x="5" y="5" width="890" height="385" rx="22" fill="#FFFFFF" stroke="#E5E5E5" stroke-width="2" filter="url(#shadowLang)"/>
+  <rect x="5" y="5" width="890" height="403" rx="22" fill="#FFFFFF" stroke="#E5E5E5" stroke-width="2" filter="url(#shadowLang)"/>
   <path d="M5 55 C120 15 190 85 310 45 C430 5 520 75 650 40 C760 10 820 45 895 20 L895 5 L5 5 Z" fill="url(#silverGradientLang)"/>
 
-  <text x="45" y="105" fill="#000000" font-family="Arial, sans-serif" font-size="28" font-weight="700">Top Languages</text>
-  <text x="45" y="132" fill="#888888" font-family="monospace" font-size="13">@lateidev / language distribution</text>
-  <line x1="45" y1="148" x2="855" y2="148" stroke="#E5E5E5" stroke-width="2"/>
+  <text x="45" y="75" fill="#000000" font-family="Arial, sans-serif" font-size="28" font-weight="700">Top Languages</text>
+  <text x="45" y="100" fill="#888888" font-family="monospace" font-size="13">@lateidev / language distribution</text>
+  <line x1="45" y1="118" x2="855" y2="118" stroke="#E5E5E5" stroke-width="2"/>
 
   
-    <text x="55" y="175" fill="#000000" font-family="Arial, sans-serif" font-size="15" font-weight="600">Python</text>
-    <rect x="190" y="160" width="600" height="18" rx="9" fill="#EEEEEE"/>
-    <rect x="190" y="160" width="572.1306109635073" height="18" rx="9" fill="#C0C0C0"/>
-    <text x="835" y="175" fill="#888888" font-family="monospace" font-size="14" text-anchor="end">95.4%</text>
+    <text x="55" y="155" fill="#000000" font-family="Arial, sans-serif" font-size="15" font-weight="600">Python</text>
+    <rect x="190" y="140" width="600" height="18" rx="9" fill="#EEEEEE"/>
+    <rect x="190" y="140" width="572.1306109635073" height="18" rx="9" fill="#C0C0C0"/>
+    <text x="835" y="155" fill="#888888" font-family="monospace" font-size="14" text-anchor="end">95.4%</text>
     
-    <text x="55" y="215" fill="#000000" font-family="Arial, sans-serif" font-size="15" font-weight="600">HTML</text>
-    <rect x="190" y="200" width="600" height="18" rx="9" fill="#EEEEEE"/>
-    <rect x="190" y="200" width="25.90656194224654" height="18" rx="9" fill="#C0C0C0"/>
-    <text x="835" y="215" fill="#888888" font-family="monospace" font-size="14" text-anchor="end">4.3%</text>
+    <text x="55" y="197" fill="#000000" font-family="Arial, sans-serif" font-size="15" font-weight="600">HTML</text>
+    <rect x="190" y="182" width="600" height="18" rx="9" fill="#EEEEEE"/>
+    <rect x="190" y="182" width="25.90656194224654" height="18" rx="9" fill="#C0C0C0"/>
+    <text x="835" y="197" fill="#888888" font-family="monospace" font-size="14" text-anchor="end">4.3%</text>
     
-    <text x="55" y="255" fill="#000000" font-family="Arial, sans-serif" font-size="15" font-weight="600">PowerShell</text>
-    <rect x="190" y="240" width="600" height="18" rx="9" fill="#EEEEEE"/>
-    <rect x="190" y="240" width="5" height="18" rx="9" fill="#C0C0C0"/>
-    <text x="835" y="255" fill="#888888" font-family="monospace" font-size="14" text-anchor="end">0.2%</text>
+    <text x="55" y="239" fill="#000000" font-family="Arial, sans-serif" font-size="15" font-weight="600">PowerShell</text>
+    <rect x="190" y="224" width="600" height="18" rx="9" fill="#EEEEEE"/>
+    <rect x="190" y="224" width="10" height="18" rx="9" fill="#C0C0C0"/>
+    <text x="835" y="239" fill="#888888" font-family="monospace" font-size="14" text-anchor="end">0.2%</text>
     
-    <text x="55" y="295" fill="#000000" font-family="Arial, sans-serif" font-size="15" font-weight="600">Batchfile</text>
-    <rect x="190" y="280" width="600" height="18" rx="9" fill="#EEEEEE"/>
-    <rect x="190" y="280" width="5" height="18" rx="9" fill="#C0C0C0"/>
-    <text x="835" y="295" fill="#888888" font-family="monospace" font-size="14" text-anchor="end">0.1%</text>
+    <text x="55" y="281" fill="#000000" font-family="Arial, sans-serif" font-size="15" font-weight="600">Batchfile</text>
+    <rect x="190" y="266" width="600" height="18" rx="9" fill="#EEEEEE"/>
+    <rect x="190" y="266" width="10" height="18" rx="9" fill="#C0C0C0"/>
+    <text x="835" y="281" fill="#888888" font-family="monospace" font-size="14" text-anchor="end">0.1%</text>
     
 
-  <path d="M5 355 C120 325 190 380 310 345 C430 310 520 370 650 340 C760 315 820 350 895 325 L895 390 L5 390 Z" fill="url(#silverGradientLang)"/>
+  <path d="M5 373 C120 343 190 398 310 363 C430 328 520 388 650 358 C760 333 820 368 895 343 L895 408 L5 408 Z" fill="url(#silverGradientLang)"/>
 </svg>
