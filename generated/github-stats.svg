@@ -23,7 +23,7 @@
   <text x="350" y="235" fill="#000000" font-family="sans-serif" font-size="34" font-weight="700">0</text>
 
   <text x="630" y="195" fill="#888888" font-family="sans-serif" font-size="14">TOTAL STARS</text>
-  <text x="630" y="235" fill="#000000" font-family="sans-serif" font-size="34" font-weight="700">1</text>
+  <text x="630" y="235" fill="#000000" font-family="sans-serif" font-size="34" font-weight="700">2</text>
 
   <path d="M5 270 C120 240 190 295 310 260 C430 225 520 285 650 255 C760 230 820 265 895 240 L895 295 L5 295 Z" fill="url(#silverGradient)"/>
 </svg>
