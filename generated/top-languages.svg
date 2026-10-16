@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="900" height="400" viewBox="0 0 900 400">
-  <rect x="0" y="0" width="900" height="400" fill="#FFFFFF"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="310" viewBox="0 0 900 310">
+  <rect x="0" y="0" width="900" height="310" fill="#FFFFFF"/>
   <defs>
     <linearGradient id="silverGradientLang" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#888888"/>
@@ -8,7 +8,7 @@
     </linearGradient>
   </defs>
 
-  <rect x="5" y="5" width="890" height="390" rx="22" fill="#FFFFFF" stroke="#E5E5E5" stroke-width="2"/>
+  <rect x="5" y="5" width="890" height="300" rx="22" fill="#FFFFFF" stroke="#E5E5E5" stroke-width="2"/>
   <path d="M5 45 C120 15 190 70 310 35 C430 5 520 60 650 30 C760 10 820 35 895 15 L895 5 L5 5 Z" fill="url(#silverGradientLang)"/>
 
   <text x="45" y="75" fill="#000000" font-family="sans-serif" font-size="28" font-weight="700">Top Languages</text>
@@ -16,26 +16,16 @@
   <line x1="45" y1="115" x2="855" y2="115" stroke="#E5E5E5" stroke-width="2"/>
 
   
-    <text x="55" y="150" fill="#000000" font-family="sans-serif" font-size="15" font-weight="600">Python</text>
+    <text x="55" y="150" fill="#000000" font-family="sans-serif" font-size="15" font-weight="600">HTML</text>
     <rect x="190" y="136" width="600" height="16" rx="8" fill="#EEEEEE"/>
-    <rect x="190" y="136" width="572.1306109635073" height="16" rx="8" fill="#C0C0C0"/>
-    <text x="835" y="150" fill="#888888" font-family="monospace" font-size="14" text-anchor="end">95.4%</text>
+    <rect x="190" y="136" width="445.5686709762572" height="16" rx="8" fill="#C0C0C0"/>
+    <text x="835" y="150" fill="#888888" font-family="monospace" font-size="14" text-anchor="end">74.3%</text>
     
-    <text x="55" y="195" fill="#000000" font-family="sans-serif" font-size="15" font-weight="600">HTML</text>
+    <text x="55" y="195" fill="#000000" font-family="sans-serif" font-size="15" font-weight="600">Python</text>
     <rect x="190" y="181" width="600" height="16" rx="8" fill="#EEEEEE"/>
-    <rect x="190" y="181" width="25.90656194224654" height="16" rx="8" fill="#C0C0C0"/>
-    <text x="835" y="195" fill="#888888" font-family="monospace" font-size="14" text-anchor="end">4.3%</text>
-    
-    <text x="55" y="240" fill="#000000" font-family="sans-serif" font-size="15" font-weight="600">PowerShell</text>
-    <rect x="190" y="226" width="600" height="16" rx="8" fill="#EEEEEE"/>
-    <rect x="190" y="226" width="12" height="16" rx="8" fill="#C0C0C0"/>
-    <text x="835" y="240" fill="#888888" font-family="monospace" font-size="14" text-anchor="end">0.2%</text>
-    
-    <text x="55" y="285" fill="#000000" font-family="sans-serif" font-size="15" font-weight="600">Batchfile</text>
-    <rect x="190" y="271" width="600" height="16" rx="8" fill="#EEEEEE"/>
-    <rect x="190" y="271" width="12" height="16" rx="8" fill="#C0C0C0"/>
-    <text x="835" y="285" fill="#888888" font-family="monospace" font-size="14" text-anchor="end">0.1%</text>
+    <rect x="190" y="181" width="154.43132902374273" height="16" rx="8" fill="#C0C0C0"/>
+    <text x="835" y="195" fill="#888888" font-family="monospace" font-size="14" text-anchor="end">25.7%</text>
     
 
-  <path d="M5 365 C120 340 190 390 310 360 C430 330 520 380 650 355 C760 335 820 365 895 345 L895 395 L5 395 Z" fill="url(#silverGradientLang)"/>
+  <path d="M5 275 C120 250 190 300 310 270 C430 240 520 290 650 265 C760 245 820 275 895 255 L895 305 L5 305 Z" fill="url(#silverGradientLang)"/>
 </svg>
